@@ -14,9 +14,21 @@ v0.22 + 1
   via `git_config_parse_path()` and `git_config_get_path()`
   respectively.
 
+* `git_config_entry_free()` frees a config entry.
+
+* `git_config_get_string_buf()` provides a way to safely retrieve a
+  string from a non-snapshot configuration.
+
 ### API removals
 
 ### Breaking API changes
+
+* `git_config_get_entry()` now gives back a ref-counted
+  `git_config_entry`. You must free it when you no longer need it.
+
+* `git_config_get_string()` will return an error if used on a
+  non-snapshot configuration, as there can be no guarantee that the
+  returned pointer is valid.
 
 v0.22
 ------
